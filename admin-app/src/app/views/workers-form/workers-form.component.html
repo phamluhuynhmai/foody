@@ -1,0 +1,126 @@
+<div class="container-fluid page">
+  <div class="d-flex page__box p-3 mt-2">{{titre}}</div>
+  <div class="page__content shadow p-3 position-relative">
+    <div class="page__content-data">
+      <mat-card>
+        <form [formGroup]="workerForm" autocomplete="off" (ngSubmit)="formAction()">
+          <mat-grid-list cols="2" rowHeight="100px">
+
+            <mat-grid-tile>
+              <mat-form-field appearance="outline">
+                <mat-label>Tên</mat-label>
+                <input matInput placeholder="Nhập vào tên và chữ lót " formControlName="name" />
+                <mat-error *ngIf="workerForm.get('name')?.hasError('required')">
+                  Nhập tên người bán
+                </mat-error>
+              </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+              <mat-form-field appearance="outline">
+                <mat-label>Họ</mat-label>
+                <input matInput placeholder="Nhập vào họ" formControlName="surname" />
+                <mat-error *ngIf="workerForm.get('surname')?.hasError('required')">
+                  Nhập họ người bán 
+                </mat-error>
+              </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+              <mat-form-field appearance="outline">
+                <mat-label>Số điện thoại</mat-label>
+                <input matInput placeholder="Nhập vào số điện thoại" formControlName="phone" type="string"/>
+                <mat-error *ngIf="workerForm.get('phone')?.hasError('required')">
+                  Nhập số điện thoại người bán
+                </mat-error>
+              </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+              <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Địa chỉ email" formControlName="email" />
+                <mat-error *ngIf="workerForm.get('email')?.hasError('required')">
+                  Nhập email
+                </mat-error>
+                <mat-error *ngIf="workerForm.get('email')?.hasError('email')">
+                  Email không hợp lệ
+                </mat-error>
+              </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+              <mat-form-field appearance="outline">
+                <mat-label>Mật khẩu</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" placeholder="Nhập  mật khẩu" formControlName="password" />
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="workerForm.get('password')?.hasError('required')">
+                  Nhập mật khẩu
+                </mat-error>
+              </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+              <mat-form-field appearance="outline">
+                <mat-label>Địa điểm</mat-label>
+                <mat-select formControlName="state">
+                  <mat-option value="Q1">Quận 1</mat-option>
+                  <mat-option value="Q3">Quận 3</mat-option>
+                  <mat-option value="Q4">Quận 4</mat-option>
+                  <mat-option value="Q5">Quận 5</mat-option>
+                  <mat-option value="Q6">Quận 6</mat-option>
+                  <mat-option value="Q7">Quận 7</mat-option>
+                  <mat-option value="Q8">Quận 8</mat-option>
+                  <mat-option value="Q10">Quận 10</mat-option>
+                  <mat-option value="Q11">Quận 11</mat-option>
+                  <mat-option value="Q12">Quận 12</mat-option>
+                  <mat-option value="BinhThanh">Quận Bình Thạnh</mat-option>
+                  <mat-option value="PhuNhuan">Quận Phú Nhuận</mat-option>
+                  <mat-option value="GoVap">Quận Gò Vấp</mat-option>
+                  <mat-option value="TanBinh">Quận Tân Bình</mat-option>
+                  <mat-option value="TanPhu">Quận Tân Phú</mat-option>
+                  <mat-option value="BinhTan">Quận Bình Tân</mat-option>
+                  <mat-option value="ThuDuc">Thành phố Thủ Đức</mat-option>
+                  <mat-option value="HocMon">Huyện Hóc Môn</mat-option>
+                  <mat-option value="CuChi">Huyện Củ Chi</mat-option>
+                  <mat-option value="BinhChanh">Huyện Bình Chánh</mat-option>
+                  <mat-option value="NhaBe">Huyện Nhà Bè</mat-option>
+                  <mat-option value="CanGio">Huyện Cần Giờ</mat-option>
+                </mat-select>
+                <mat-error *ngIf="workerForm.get('state')?.hasError('required')">
+                  Chọn địa điểm
+                </mat-error>
+              </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+              <mat-form-field appearance="outline">
+                <mat-label>Quán ăn</mat-label>
+                <mat-select formControlName="restaurantId">
+                  <mat-option value="">Chọn một quán ăn</mat-option>
+                  <mat-option *ngFor="let item of dataSource" [value]="item._id">{{ item.name }}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="workerForm.get('restaurantId')?.hasError('required')">
+                  Phải chọn một quán ăn
+                </mat-error>
+              </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+              
+            </mat-grid-tile>
+
+            <mat-grid-tile class="action">
+              <button mat-button color="primary" type="submit">XONG</button>
+              <button mat-stroked-button color="warn" type="reset">LOẠI BỎ</button>
+            </mat-grid-tile>
+
+          </mat-grid-list>
+        </form>
+          
+      </mat-card>
+    </div>
+  </div>
+</div>

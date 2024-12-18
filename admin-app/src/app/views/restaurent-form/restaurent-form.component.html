@@ -1,0 +1,115 @@
+<div class="container-fluid page">
+  <div class="d-flex page__box p-3 mt-2">{{titre}}</div>
+  <div class="page__content shadow p-3 position-relative">
+    <div class="page__content-data">
+      <mat-card>
+        <form [formGroup]="restaurentForm" autocomplete="off" (ngSubmit)="formAction()">
+          <mat-grid-list cols="2" rowHeight="100px">
+
+            <mat-grid-tile>
+              <mat-form-field appearance="outline">
+                <mat-label>Tên</mat-label>
+                <input matInput placeholder="Nhập tên quán" formControlName="name" />
+                <mat-error *ngIf="restaurentForm.get('name')?.hasError('required')">
+                  Nhập vào tên quán ăn
+                </mat-error>
+              </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+              <mat-form-field appearance="outline">
+                <mat-label>Địa điểm</mat-label>
+                <mat-select formControlName="state">
+                  <mat-option value="Q1">Quận 1</mat-option>
+                  <mat-option value="Q3">Quận 3</mat-option>
+                  <mat-option value="Q4">Quận 4</mat-option>
+                  <mat-option value="Q5">Quận 5</mat-option>
+                  <mat-option value="Q6">Quận 6</mat-option>
+                  <mat-option value="Q7">Quận 7</mat-option>
+                  <mat-option value="Q8">Quận 8</mat-option>
+                  <mat-option value="Q10">Quận 10</mat-option>
+                  <mat-option value="Q11">Quận 11</mat-option>
+                  <mat-option value="Q12">Quận 12</mat-option>
+                  <mat-option value="BinhThanh">Quận Bình Thạnh</mat-option>
+                  <mat-option value="PhuNhuan">Quận Phú Nhuận</mat-option>
+                  <mat-option value="GoVap">Quận Gò Vấp</mat-option>
+                  <mat-option value="TanBinh">Quận Tân Bình</mat-option>
+                  <mat-option value="TanPhu">Quận Tân Phú</mat-option>
+                  <mat-option value="BinhTan">Quận Bình Tân</mat-option>
+                  <mat-option value="ThuDuc">Thành phố Thủ Đức</mat-option>
+                  <mat-option value="HocMon">Huyện Hóc Môn</mat-option>
+                  <mat-option value="CuChi">Huyện Củ Chi</mat-option>
+                  <mat-option value="BinhChanh">Huyện Bình Chánh</mat-option>
+                  <mat-option value="NhaBe">Huyện Nhà Bè</mat-option>
+                  <mat-option value="CanGio">Huyện Cần Giờ</mat-option>
+
+                </mat-select>
+                <mat-error *ngIf="restaurentForm.get('state')?.hasError('required')">
+                  Chọn địa điểm
+                </mat-error>
+              </mat-form-field>
+            </mat-grid-tile>
+            <!--<hình ảnh không hiện lên/>-->
+            <mat-grid-tile>
+              <mat-form-field appearance="outline">
+                <mat-label>Hình ảnh</mat-label>
+                <!--<input matInput placeholder="Image" formControlName="image" type="file"/>-->
+                <ngx-mat-file-input formControlName="image" placeholder="Image"  accept=".png, .jpg, .jpeg"></ngx-mat-file-input>
+                <mat-error *ngIf="restaurentForm.get('image')?.hasError('required')">
+                  Chọn hình ảnh định dạng .png, .jpg, .jpeg
+                </mat-error>
+              </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+              <mat-form-field appearance="outline">
+                <mat-label>Danh mục</mat-label>
+                <mat-select formControlName="speciality">
+                  <mat-option value="">Chọn danh mục</mat-option>
+                  <mat-option value="Foods">Thực phẩm ăn liền, chế biến sẵn</mat-option>
+                  <mat-option value="Drinks">Đồ uống các loại</mat-option>
+                  <mat-option value="Coffee">Cà phê uống liền</mat-option>
+                  <mat-option value="Milk">Sữa các loại, sữa chua</mat-option>
+                  <mat-option value="Fruits">Trái cây các loại</mat-option>
+                  <mat-option value="Grains">Ngũ cốc, yến mạch</mat-option>
+                  <mat-option value="Cakes">Bánh truyền thống (bánh chưng, bánh tét,…)</mat-option>
+
+                </mat-select>
+                <mat-error *ngIf="restaurentForm.get('speciality')?.hasError('required')">
+                  Chọn danh mục
+                </mat-error>
+              </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+              <mat-form-field appearance="outline">
+                <mat-label>Điện thoại</mat-label>
+                <input matInput placeholder="Nhập vào số điện thoại" formControlName="phone" type="string"/>
+                <mat-error *ngIf="restaurentForm.get('phone')?.hasError('required')">
+                  Nhập vào số điện thoại
+                </mat-error>
+              </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+              <mat-form-field appearance="outline">
+                <mat-label>Địa chỉ</mat-label>
+                <input matInput placeholder="Nhập địa chỉ cụ thể" formControlName="address" />
+                <mat-error *ngIf="restaurentForm.get('address')?.hasError('required')">
+                  Nhập vào địa chỉ
+                </mat-error>
+              </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+              <button mat-button color="primary" type="submit">XONG</button>
+              <button mat-stroked-button color="warn" type="reset">LOẠI BỎ</button>
+            </mat-grid-tile>
+
+          </mat-grid-list>
+        </form>
+          
+      </mat-card>
+    </div>
+  </div>
+</div>
